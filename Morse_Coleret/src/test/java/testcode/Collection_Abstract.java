@@ -4,7 +4,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 public abstract class Collection_Abstract {
-	protected String[] collectionsArray = {"Lirque", "Bane"};
+	protected String[] collectionsArray = {"Lirque", "Bane", "TestCollection"};
 	private MongoDatabase database;
 	/*
 	 Testing purposes only here^
