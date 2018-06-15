@@ -26,7 +26,7 @@ public class Test_Setup {
 	public void test() {
 		 MongoClientURI connectionString = new MongoClientURI("mongodb://localhost:27017");
 		 MongoClient mongoClient = new MongoClientInstantiate().getMongoInstance(connectionString);
-		 MongoDatabase mongoDatabase = mongoClient.getDatabase("test");
+		 MongoDatabase mongoDatabase = mongoClient.getDatabase("alpha");
 		 System.out.println("Assuming that the collection has been created, ");
 		 System.out.println("Then begin insertion of documents! ");
 		 Document document = new Document();

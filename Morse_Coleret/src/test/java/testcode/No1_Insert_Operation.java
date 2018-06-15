@@ -10,7 +10,7 @@ import com.mongodb.client.MongoCollection;
 
 public class No1_Insert_Operation implements Sub_Query_OperationInsert {
 	private MongoCollection<Document> collection;
-	List<Document> arrayDocument = new ArrayList<Document>();
+	private List<Document> arrayDocument = new ArrayList<Document>();
 	public void insert() {
 		collection.insertMany(arrayDocument);
 	}
