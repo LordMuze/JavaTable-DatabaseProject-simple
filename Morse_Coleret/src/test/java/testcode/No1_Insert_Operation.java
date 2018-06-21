@@ -2,7 +2,6 @@ package testcode;
 
 
 import org.bson.Document;
-
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
@@ -22,5 +21,4 @@ public class No1_Insert_Operation implements Sub_Query_OperationInsert {
 	public void setData(Document[] documentArray) {
 		arrayDocument = Arrays.asList(documentArray);
 	}
-
 }
