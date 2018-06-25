@@ -13,12 +13,8 @@ import org.junit.Test;
 import com.mongodb.client.FindIterable;
 import com.mongodb.client.MongoCollection;
 
-import testcode.Collection_Abstract;
-import testcode.Collection_Operation;
-import testcode.IterableToArrayList;
-import testcode.Mongo_Singleton;
-import testcode.No_1_Find_Operation;
-
+import testcode.*;
+import databasetestStubs.IterableToArrayListStringNameStub;
 
 //Test parameters with, one from the parameterized list and other from db
 //Using find operation stubs for the test
@@ -37,10 +33,10 @@ public class FindIterableToArrayListTest {
 		collectionOp = new Collection_Operation(singleton);
 		collection = collectionOp.getCollection("TestCollection");
 		findOperation = new No_1_Find_Operation();
-		dataConverter = new IterableToArrayList();
 		findOperation.setCollection(collection);
 		iterable = findOperation.queryGetData();
-		dataConverter.setData(iterable);
+		dataConverter = new StringIterableArray(iterable);
+
 	}
 
 	@Test
