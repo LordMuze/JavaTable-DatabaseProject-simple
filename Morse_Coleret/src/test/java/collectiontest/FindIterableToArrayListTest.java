@@ -26,6 +26,7 @@ public class FindIterableToArrayListTest {
 	private IterableToArrayList dataConverter;
 	private FindIterable iterable;
 	private String[] expectedResult = {"Serbesius", "Asterisk", "Grazing", "ENFJ", "ENFP"};
+	private IterableToArrayList itera;
 	@Before
 	public void setUp() throws Exception {
 		singleton = new Mongo_Singleton();
@@ -36,13 +37,18 @@ public class FindIterableToArrayListTest {
 		findOperation.setCollection(collection);
 		iterable = findOperation.queryGetData();
 		dataConverter = new StringIterableArray(iterable);
+		itera = new StringIterableArray(iterable);
 
 	}
 
 	@Test
 	public void test() {
-		ArrayList arrayResult = dataConverter.getDataArray();
-		Document[] actualResult = (Document[]) arrayResult.toArray(new Document[arrayResult.size()]);
+		//ArrayList arrayResult = dataConverter.getDataArray();
+		//Document[] actualResult = (Document[]) arrayResult.toArray(new Document[arrayResult.size()]);
+	    Object[] objectArray = itera.getData();
+	    for(int i = 0; i < objectArray.length; i++) {
+	    	System.out.println(objectArray[i].toString());
+	    }
 	}
 
 }

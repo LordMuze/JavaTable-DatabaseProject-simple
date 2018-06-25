@@ -4,7 +4,7 @@ import java.util.*;
 import org.bson.Document;
 
 import com.mongodb.client.FindIterable;
-@SuppressWarnings("rawtypes")
+
 public abstract class IterableToArrayList {
 	public IterableToArrayList(FindIterable<Document> data) {
 		this.data = data;
@@ -15,8 +15,8 @@ public abstract class IterableToArrayList {
 	public void setData(FindIterable<Document> data) {
 		this.data = data;
 	}
-	public abstract Array 
-	public ArrayList getDataArray() {
+	public abstract Object[] getData();
+	public ArrayList<Document> getDataArray() {
 		Iterator<Document> iterate = data.iterator();
 		while(iterate.hasNext()) {
 			dataArray.add(i, (Document) iterate.next());
@@ -24,4 +24,5 @@ public abstract class IterableToArrayList {
 		}
 		return dataArray;
 	}
+	
 }
