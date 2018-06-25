@@ -10,6 +10,7 @@ import org.junit.Test;
 import com.mongodb.client.MongoCollection;
 
 import databasetestStubs.DataConvertStubs;
+import junit.framework.Assert;
 import testcode.*;
 public class Find_Operation_One_Test {
 	private Mongo_Singleton singleton;
@@ -28,14 +29,15 @@ public class Find_Operation_One_Test {
 		findOperation = new No_1_Find_Operation();
 		findOperation.setCollection(collection);
 		Document doc = new Document();
-		doc.put("name", "Serbesius");
-		filter = (Bson) doc;
+		//doc.put("name", "Serbesius");
+		//filter = (Bson) doc;
 	}
 
 	@Test
 	public void test() {
-		stub.setDocumentIterable(findOperation.queryGetData(filter));
+		stub.setDocumentIterable(findOperation.queryGetData());
 		stub.testResult();
+		Assert.assertNotNull(findOperation.queryGetData());
 	}
 
 }
