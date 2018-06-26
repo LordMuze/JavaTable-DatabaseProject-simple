@@ -45,9 +45,9 @@ public class FindIterableToArrayListTest {
 	public void test() {
 		//ArrayList arrayResult = dataConverter.getDataArray();
 		//Document[] actualResult = (Document[]) arrayResult.toArray(new Document[arrayResult.size()]);
-	    Object[] objectArray = itera.getData();
-	    for(int i = 0; i < objectArray.length; i++) {
-	    	System.out.println(objectArray[i].toString());
+	    ArrayList<Object> objectArray = itera.getData();
+	    for(int i = 0; i < objectArray.size(); i++) {
+	    	System.out.println(objectArray.get(i).toString());
 	    }
 	}
 

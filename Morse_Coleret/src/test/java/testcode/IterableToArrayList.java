@@ -15,7 +15,7 @@ public abstract class IterableToArrayList {
 	public void setData(FindIterable<Document> data) {
 		this.data = data;
 	}
-	public abstract Object[] getData();
+	public abstract ArrayList<Object> getData();
 	public ArrayList<Document> getDataArray() {
 		Iterator<Document> iterate = data.iterator();
 		while(iterate.hasNext()) {
