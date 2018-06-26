@@ -4,6 +4,7 @@ import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 
 public abstract class Collection_Abstract {
+	//Calling Operations class
 	protected String[] collectionsArray = {"Lirque", "Bane", "TestCollection"};
 	private MongoDatabase database;
 	/*

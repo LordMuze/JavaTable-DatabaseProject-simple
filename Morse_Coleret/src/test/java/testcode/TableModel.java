@@ -7,8 +7,7 @@ import javax.swing.table.AbstractTableModel;
 
 public class TableModel extends AbstractTableModel  {
 	private static final long serialVersionUID = -4230326411806744923L;
-	
-	
+	private OperationsOption op;
 	//calls the operation class to take the data
 	List<List<Object>> arrayList;
 	List<String> columnNames;
@@ -43,6 +42,9 @@ public class TableModel extends AbstractTableModel  {
     public void deleteData(int rowIndex){
         arrayList.remove(rowIndex);
         
+    }
+    public void setOperations(OperationsOption op) {
+    	this.op = op;
     }
 
 }
