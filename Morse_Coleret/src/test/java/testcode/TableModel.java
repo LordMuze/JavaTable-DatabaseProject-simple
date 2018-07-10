@@ -7,10 +7,16 @@ import javax.swing.table.AbstractTableModel;
 
 public class TableModel extends AbstractTableModel  {
 	private static final long serialVersionUID = -4230326411806744923L;
+	private String dataType;
 	private OperationsOption op;
 	//calls the operation class to take the data
-	List<List<Object>> arrayList;
-	List<String> columnNames;
+	private List<List<Object>> arrayList;
+	private List<String> columnNames;
+	public TableModel(String dataType) {
+		this.dataType = dataType;
+		op = new OperationsOption(dataType);
+		arrayList = op.find();
+	}
 	public int getColumnCount() {
 		columnNames.size();
 		return 0;
@@ -30,11 +36,6 @@ public class TableModel extends AbstractTableModel  {
         arrayList.get(rowIndex).set(columnIndex, aValue);
         fireTableCellUpdated(rowIndex, columnIndex);
     }
-	
-	public void createData(){
-        arrayList.add(new ArrayList<Object>(columnNames.size()));
-        fireTableRowsInserted(arrayList.size() - 1, arrayList.size() - 1);
-    }
     @Override
     public boolean isCellEditable(int rowIndex, int columnIndex){
         return true;
@@ -46,5 +47,7 @@ public class TableModel extends AbstractTableModel  {
     public void setOperations(OperationsOption op) {
     	this.op = op;
     }
-
+    public void setDataType(String name) {
+    	this.dataType = name;
+    }
 }

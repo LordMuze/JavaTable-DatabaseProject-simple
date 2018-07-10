@@ -19,5 +19,4 @@ public class AppManagerPane extends JPanel {
 		add(settingsButton);
 		add(websiteButton);
 	}
-
 }
