@@ -37,6 +37,8 @@ public class Find_Operation_One_Test {
 	public void test() {
 		stub.setDocumentIterable(findOperation.queryGetData());
 		stub.testResult();
+		stub.getKeys();
+		stub.getListKeys();
 		Assert.assertNotNull(findOperation.queryGetData());
 	}
 

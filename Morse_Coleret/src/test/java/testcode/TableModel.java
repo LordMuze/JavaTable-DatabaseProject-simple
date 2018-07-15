@@ -1,21 +1,23 @@
 package testcode;
 
 import java.util.ArrayList;
+import testcode.*;
 import java.util.List;
 
 import javax.swing.table.AbstractTableModel;
 
 public class TableModel extends AbstractTableModel  {
 	private static final long serialVersionUID = -4230326411806744923L;
-	private String dataType;
+	private String dataType; // placeholder in case we need to set to different datatype
 	private OperationsOption op;
 	//calls the operation class to take the data
 	private List<List<Object>> arrayList;
-	private List<String> columnNames;
+	private List<Object> columnNames;
 	public TableModel(String dataType) {
 		this.dataType = dataType;
 		op = new OperationsOption(dataType);
 		arrayList = op.find();
+		columnNames = op.getColumnNamesData();
 	}
 	public int getColumnCount() {
 		columnNames.size();

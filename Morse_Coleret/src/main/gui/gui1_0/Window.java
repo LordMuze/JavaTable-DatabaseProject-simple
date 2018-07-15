@@ -1,9 +1,8 @@
 package gui1_0;
 import java.awt.FlowLayout;
+import testcode.*;
 
 import javax.swing.*;
-
-import testcode.TableModel;
 public class Window extends JFrame {
 	GUI_Controller controller;
 	TableModel model;

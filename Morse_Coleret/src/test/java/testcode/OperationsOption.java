@@ -55,4 +55,7 @@ public class OperationsOption {
 	public void setDataType(String name) {
 		converters = new ConverterFactory(name);
 	}
+	public List<Object> getColumnNamesData() {
+		return converters.getDataConverterFactory().getArrayColumn();
+	}
 }
