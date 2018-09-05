@@ -8,6 +8,8 @@ import org.bson.Document;
 
 import com.mongodb.client.FindIterable;
 
+import javafx.collections.ObservableList;
+
 public class DefaultConverter implements Driving_Conversion_Interface {
 	private Document document;
 	public List<List<Object>> convertGetData(FindIterable<Document> iterable) {
@@ -16,7 +18,7 @@ public class DefaultConverter implements Driving_Conversion_Interface {
 	     getColumnData((Document) iterate.next());
 		 while(iterate.hasNext()) {
 			document = (Document) iterate.next();
-			for(int i = 1; i < columnData.size(); i++) { //i is one since i = 0 is an inconvertible ObjectId
+			for(int i = 0; i < columnData.size(); i++) { 
 			    listData.add(new ArrayList<Object>());
 				listData.get(counter).add(document.getString(columnData.get(i).toString()));
 			}
@@ -27,5 +29,10 @@ public class DefaultConverter implements Driving_Conversion_Interface {
 	@Override
 	public List<Object> getArrayColumn() {
 		return columnData;
+	}
+	@Override
+	public ObservableList<Person> convertGetPersonData(FindIterable<Document> iterable) {
+		System.out.println("Default converter does not implement!");
+		return null;
 	}
 }

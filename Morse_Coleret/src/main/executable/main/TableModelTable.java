@@ -43,7 +43,12 @@ public class TableModelTable extends AbstractTableModel {
         //arrayListDB.remove(rowIndex);
     }
 	
-	//----
 	
-
+	//----
+    public List<List<Object>> getArrayListDB() {
+		return arrayListDB;
+	}
+	public List<Object> getColumnNames() {
+		return columnNames;
+	}
 }

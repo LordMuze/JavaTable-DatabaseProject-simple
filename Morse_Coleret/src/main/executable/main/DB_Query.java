@@ -6,8 +6,11 @@ import org.bson.conversions.Bson;
 
 import Data.DefaultConverter;
 import Data.Driving_Conversion_Interface;
+import Data.Fxconverter;
+import Data.Person;
 import Query_Operation.*;
 import collection_manage.Collection_Abstract;
+import javafx.collections.ObservableList;
 public class DB_Query {
 	static int i = 0;
 	private Collection_Abstract collectionManager;
@@ -27,7 +30,12 @@ public class DB_Query {
     	return dataConverter.convertGetData(new FindExecutable(collectionManager.getCollection(2)).queryGetData());
 	}
     public void setDataType(String dataType) {
-    	System.out.println("No variations implemented yet!");
+    	if(dataType == "default") {
+    		dataConverter = new DefaultConverter();
+    	}
+    	if(dataType == "fx") {
+    		dataConverter = new Fxconverter();
+    	}
     }
 	public List<Object> getColumnNamesData(){
 		if(i == 1) {
@@ -35,6 +43,10 @@ public class DB_Query {
 		return dataConverter.getArrayColumn();
 		}
 		return null;
+	}
+	public ObservableList<Person> getPersonDataList(){
+		i++;
+		return dataConverter.convertGetPersonData(new FindExecutable(collectionManager.getCollection(2)).queryGetData());
 	}
 	
 }

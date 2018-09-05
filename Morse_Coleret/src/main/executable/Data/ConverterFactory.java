@@ -10,4 +10,7 @@ public class ConverterFactory {
 		}
 		return null;
 	}
+	public void setConverter(String name) {
+		this.name = name;
+	}
 }

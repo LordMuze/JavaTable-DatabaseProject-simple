@@ -10,16 +10,17 @@ import com.mongodb.client.MongoCollection;
 
 public class InsertExecutable {
 	private MongoCollection<Document> collection;
+	public InsertExecutable(MongoCollection<Document> collection) {
+		this.collection = collection;
+	}
 	private List<Document> arrayDocument = new ArrayList<Document>();
-	public void insert() {
+	public void insert(Document[] documentArray) {
+		arrayDocument = Arrays.asList(documentArray);
 		collection.insertMany(arrayDocument);
 	}
-	//bulk write operations here
+
 	public void setCollection(MongoCollection<Document> collection) {
 		this.collection = collection;
 	}
-	//array as list here
-	public void setData(Document[] documentArray) {
-		arrayDocument = Arrays.asList(documentArray);
-	}
+	
 }
