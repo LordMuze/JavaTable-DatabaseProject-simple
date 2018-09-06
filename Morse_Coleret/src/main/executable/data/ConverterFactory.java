@@ -1,4 +1,4 @@
-package Data;
+package data;
 public class ConverterFactory {
 	private String name;
 	public ConverterFactory(String name) {

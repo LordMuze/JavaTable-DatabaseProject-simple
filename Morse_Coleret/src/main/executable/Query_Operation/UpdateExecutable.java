@@ -12,7 +12,6 @@ public class UpdateExecutable {
 		this.collection = collection;
 	}
 	public void setCollection(MongoCollection<Document> collection) {
-		// TODO Auto-generated method stub
 		this.collection = collection;
 	}
 	public UpdateResult update(Bson filter, Bson update) {
