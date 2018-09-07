@@ -4,6 +4,8 @@ import java.util.List;
 import org.bson.Document;
 import org.bson.conversions.Bson;
 
+import com.mongodb.client.result.UpdateResult;
+
 import Query_Operation.*;
 import collection_manage.Collection_Abstract;
 import data.DefaultConverter;
@@ -32,6 +34,9 @@ public class DB_Query {
     
     public void insert(Document doc) {
     	new InsertExecutable(collectionManager.getCollection(2)).insert(doc);
+    }
+    public UpdateResult update(Bson filter, Bson update) {
+    	return new UpdateExecutable(collectionManager.getCollection(2)).update(filter, update);
     }
     
     public void setDataType(String dataType) {

@@ -1,21 +1,29 @@
 package guitable;
 
 import java.util.ArrayList;
+
 import java.util.List;
+
+
+import org.bson.Document;
+import org.bson.conversions.Bson;
 
 import collection_manage.Collection_Abstract;
 import collection_manage.Collection_Operation;
 import data.Person;
 import javafx.application.Application;
 import javafx.collections.ObservableList;
+import javafx.event.EventHandler;
 import javafx.geometry.Insets;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.control.TableColumn;
+import javafx.scene.control.TableColumn.CellEditEvent;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.control.cell.TextFieldTableCell;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
@@ -25,6 +33,7 @@ import main.Mongo_Singleton;
 public class TableViewSample extends Application {
  
     private TableView<Person> table = new TableView<Person>();
+    private String previousValue;
     
     public static void main(String[] args) {
         launch(args);
@@ -68,6 +77,47 @@ public class TableViewSample extends Application {
         	columnTemp.setCellValueFactory(
         			new PropertyValueFactory<Person,String>(columnData.get(i).toString())
         			);
+        	
+        	columnTemp.setCellFactory(TextFieldTableCell.forTableColumn());
+//-------------------------------------
+        	
+        	//on start commit
+        	columnTemp.setOnEditStart(new EventHandler<CellEditEvent<Person, String>>(){
+
+				@Override
+				public void handle(CellEditEvent<Person, String> t) {
+					previousValue = t.getOldValue();
+					System.out.println(t.getOldValue());
+				}
+        		
+        	});
+        	
+        	//on edit commit
+        	columnTemp.setOnEditCommit(
+        	    new EventHandler<CellEditEvent<Person, String>>() {
+        	        @Override
+        	        public void handle(CellEditEvent<Person, String> t) {
+        				Person person, personTemp;
+        	            person = ((Person) t.getTableView().getItems().get(
+        	                t.getTablePosition().getRow())
+        	                );
+        				personTemp = new Person();
+        				personTemp.setName(previousValue);
+      
+        	            person.setName(t.getNewValue());
+        	            
+        	            
+        	            
+        				Document filterDoc = personTemp;
+        	            Document updateDoc = person;
+        	            Document docUpdate = new Document("$set", updateDoc);
+        	            queryDB.update((Bson)filterDoc, (Bson) docUpdate);			
+        	        }
+        	    }
+        	);
+        	
+ //------------------------------       	
+        	
         	table.getColumns().add(columnTemp);
         }
         

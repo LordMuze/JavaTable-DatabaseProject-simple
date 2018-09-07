@@ -15,15 +15,21 @@ public class Person extends Document {
     }
     public Person(String name) {
     	firstName = new SimpleStringProperty(name);
+    	addDocumentName();
     }
     public String getName() {
+    	addDocumentName();
         return firstName.get();
     }
     public void setName(String name) {
     	firstName = new SimpleStringProperty(name);
+    	this.temp = name;
+    	addDocumentName();
     }
     public void setName(SimpleStringProperty name) {
     	this.firstName = name;
+    	temp = this.firstName.get();
+    	addDocumentName();
     }
     
     //for testing
